@@ -3,7 +3,7 @@
 
 
 ## Description
-Project crimsonite-01(Chie) is a Discord bot written in python. While it has it's limits,
+Project Crimsonite-01(Codename Chie) is a Discord bot written in python. While it has it's limits,
 it also comes with it's own unique feature; storytelling. It's nothing special, but you can read
 a story using a Discord bot.
 
@@ -59,13 +59,13 @@ Commands: 28
 * bookshelf - Displays your collected books
 
 #### Story:
-* read - Reads the specified book(You have to find out the name of the book yourself.)
+* read - Reads the specified book(You have to find out the name of the book by yourself.)
 
 #### Guild House:
 * train - Train to raise your exp and get stronger.
 * commission - Accept a commission to receive money or exp.
 
-  *...*
+...
 
 
 
@@ -73,12 +73,11 @@ Commands: 28
 
 
 ## Regarding to another version of this Bot
-As you can see, crimsonite-01(Chie) has very few commands. That is because I made this for learning purposes.
-Right now, I am currently working on another bot with the same storytelling feature, but a little different
-from this one.
+As you can see, crimsonite-01(Chie) has very a few commands, and that is because it is made for learning purposes.
+Right now, the owner is currently working on another similar project, but a much simpler one, so this project might not get
+enough attention to maintain.
 
 ## Are you planning to use this software in your own project?
-This is an open software and you can use it at your will.
+This is an open-source project and you can use it at your will.
 
-There's only the master branch containing all the code to run this bot. I suggest that you edit most of the functions
-to make it more readable. (I was too lazy to clean this up, and the whole code itself is a mess つ﹏⊂.)
+I suggest that you edit most of the functions to make it more readable. (The owner too lazy to clean this up, and the whole code itself is a mess つ﹏⊂.)
