@@ -78,6 +78,6 @@ Right now, the owner is currently working on another similar project, but a much
 enough attention to maintain.
 
 ## Are you planning to use this software in your own project?
-This is an open-source project and you can use it at your will.
+This is an open-source project and you can use it as long as you follow the [license](http://www.apache.org/licenses/LICENSE-2.0).
 
 I suggest that you edit most of the functions to make it more readable. (The owner too lazy to clean this up, and the whole code itself is a mess つ﹏⊂.)
