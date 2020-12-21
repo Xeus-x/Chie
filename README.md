@@ -14,9 +14,9 @@ do daily commands, and more! Also, other parameters can give you access to sever
 
 
 ## Bot Info
-Name: Chie
-Version: 0.1.0
-Library: discord.py
+Name: Chie\
+Version: 0.1.0\
+Library: discord.py\
 Commands: 28
 
 
