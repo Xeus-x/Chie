@@ -1,4 +1,5 @@
 # crimsonite-01(Chie)
+![GitHub](https://img.shields.io/github/license/Nhalrath/Chie)
 
 
 
