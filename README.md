@@ -1,4 +1,6 @@
-# crimsonite-01(Chie)
+<img src = "https://imgur.com/UFkpV0F.png" loading = "lazy" alt = "...">
+
+# Chie
 ![GitHub](https://img.shields.io/github/license/Nhalrath/Chie)
 
 
