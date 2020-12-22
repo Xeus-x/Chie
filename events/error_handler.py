@@ -15,7 +15,7 @@
 import discord
 from discord.ext import commands
 
-class Error_Handler(commands.Cog):
+class ErrorHandler(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -39,4 +39,4 @@ class Error_Handler(commands.Cog):
             raise error
 
 def setup(client):
-    client.add_cog(Error_Handler(client))
+    client.add_cog(ErrorHandler(client))

@@ -19,7 +19,7 @@ from discord.ext import commands
 guild_id = "Guild ID"
 log_id = """Logs Channel ID"""
 
-class Forum_Events(commands.Cog):
+class ForumEvents(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -75,4 +75,4 @@ class Forum_Events(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Forum_Events(client))
+    client.add_cog(ForumEvents(client))

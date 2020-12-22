@@ -17,7 +17,7 @@ import json
 import bot
 from discord.ext import commands
 
-class user_stats(commands.Cog):
+class UserStats(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -294,4 +294,4 @@ class user_stats(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(user_stats(client))
+    client.add_cog(UserStats(client))

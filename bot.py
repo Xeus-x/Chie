@@ -23,7 +23,7 @@ intents = discord.Intents().all()
 
 # Change these values to String if you are trying to self-host your bot
 token = os.environ['TOKEN']
-tggToken = os.environ['tggTOKEN']
+tggToken = os.environ['TGGTOKEN']
 passw = os.environ['PASSWORD']
 owner = os.environ['OWNER']
 
@@ -107,7 +107,8 @@ async def reboot(ctx, extension, ext):
     else:
         return False
 
-#Loop Load
+# Loop Load
+# Shouldn't have used for loop.
 for files in os.listdir('./commands'):
     if files.endswith('.py'):
         client.load_extension(f'commands.{files[:-3]}')

@@ -17,7 +17,7 @@ import random
 import json
 from discord.ext import commands
 
-class story(commands.Cog):
+class Story(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -126,4 +126,4 @@ class story(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(story(client))
+    client.add_cog(Story(client))

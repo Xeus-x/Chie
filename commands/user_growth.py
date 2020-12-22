@@ -19,7 +19,7 @@ import json
 import random
 from discord.ext import commands
 
-class User_Growth(commands.Cog):
+class UserGrowth(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -266,4 +266,4 @@ class User_Growth(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(User_Growth(client))
+    client.add_cog(UserGrowth(client))
