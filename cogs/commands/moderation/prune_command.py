@@ -13,9 +13,6 @@
 #   limitations under the License.
 
 import discord
-import random
-import list
-import embed_list
 from discord.ext import commands
 from utils import event_logger
 
