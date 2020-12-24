@@ -1,4 +1,6 @@
-<img src = "https://imgur.com/UFkpV0F.png" loading = "lazy" alt = "...">
+<p align = "center">
+  <img src = "https://imgur.com/UFkpV0F.png" loading = "lazy" alt = "..."/>
+<p/>
 
 # Chie
 ![GitHub](https://img.shields.io/github/license/Nhalrath/Chie)
