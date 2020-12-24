@@ -37,6 +37,7 @@ async def on_ready():
 
 # Loads Command Cogs
 client.load_extension(path_commands + "miscellaneous.ping_command")
+client.load_extension(path_commands + "miscellaneous.say_command")
 
 client.load_extension(path_commands + "moderation.prune_command")
 
