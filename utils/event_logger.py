@@ -23,3 +23,23 @@ def INFO(logger, msg):
 
     logger.info(msg)
     print(msg)
+
+def DEBUG(logger, msg):
+    logger = logging.getLogger(logger)
+    logger.setLevel(logging.DEBUG)
+    handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a')
+    handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)s | %(name)s | %(message)s'))
+    logger.addHandler(handler)
+
+    logger.debug(msg)
+    print(msg)
+
+def WARNING(logger, msg):
+    logger = logging.getLogger(logger)
+    logger.setLevel(logging.WARNING)
+    handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a')
+    handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)s | %(name)s | %(message)s'))
+    logger.addHandler(handler)
+
+    logger.warning(msg)
+    print(msg)

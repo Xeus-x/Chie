@@ -13,9 +13,6 @@
 #   limitations under the License.
 
 import discord
-import json
-import os
-import time
 
 from discord.ext import commands
 from utils import config
@@ -28,9 +25,6 @@ prefix = config.get_prefix
 client = commands.Bot(prefix, intents = intents)
 path_commands = "cogs.commands."
 token = config.get_token
-tgg_token = config.get_tgg_token
-owner = config.get_owner
-password = config.get_password
 
 # Removes built-in command
 client.remove_command("help")

@@ -6,7 +6,7 @@
 
 
 ## Description
-Project Crimsonite-01(Codename Chie) is a Discord bot written in python. While it has it's limits,
+Chie is a Discord bot written in python. While it has it's limits,
 it also comes with it's own unique feature; storytelling. It's nothing special, but you can read
 a story using a Discord bot.
 
@@ -17,9 +17,9 @@ do daily commands, and more! Also, other parameters can give you access to sever
 
 ## Bot Info
 Name: Chie\
-Version: 0.1.0\
+Version: 0.1.1\
 Library: discord.py\
-Commands: 28
+Commands: -
 
 
 
