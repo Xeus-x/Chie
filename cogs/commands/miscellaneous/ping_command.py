@@ -27,7 +27,7 @@ class PingCommand(commands.Cog):
 
         msg = await ctx.send("Pinging...")
         timeEnd = time.perf_counter()
-        
+
         await msg.edit(content = "**Ping:** %dms | **Websocket:** %dms" % (round((timeEnd - timeStart) * 1000), websocket))
 
 def setup(client):
