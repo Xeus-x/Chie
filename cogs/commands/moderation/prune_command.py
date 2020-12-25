@@ -16,7 +16,7 @@ import discord
 from discord.ext import commands
 from utils import event_logger
 
-class Prune(commands.Cog):
+class PruneCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
 

@@ -15,7 +15,7 @@
 import discord
 from discord.ext import commands
 
-class Ban(commands.Cog):
+class BanCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
 

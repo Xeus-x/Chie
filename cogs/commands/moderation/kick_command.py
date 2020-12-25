@@ -15,7 +15,7 @@
 import discord
 from discord.ext import commands
 
-class Kick(commands.Cog):
+class KickCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
 
