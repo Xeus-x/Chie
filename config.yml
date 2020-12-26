@@ -1,1 +1,4 @@
-token: "Your Token here"
+TOKEN: "Your Token here"
+TGGTOKEN: "Your Top.gg Token here"
+PREFIX: "Prefix"
+OWNERID: "Your Discord User ID here"

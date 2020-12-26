@@ -13,10 +13,14 @@
 #   limitations under the License.
 import yaml
 
-config = open("config.yml", "r")
-var = yaml.load(config, Loader = yaml.FullLoader)
-get_token = var["token"]
-get_tgg_token = "a"# os.environ['TGGTOKEN'] or top.gg TOKEN
-get_prefix = ">"# Prefix
-get_owner = "a"# os.environ['OWNER'] or Owner's User ID
-get_password = "a"# os.environ['PASSWORD'] or Password
+def __parse(var):
+    config_variables = open("config.yml", "r")
+    parsed_yaml = yaml.load(config_variables, Loader = yaml.FullLoader)
+    val = parsed_yaml[var]
+
+    return val
+
+get_token = __parse("TOKEN")
+get_tgg_token = __parse("TGGTOKEN")
+get_prefix = __parse("PREFIX")
+get_owner = __parse("OWNERID")
