@@ -32,4 +32,4 @@ class PruneCommand(commands.Cog):
             await ctx.channel.purge(limit=amount)
 
 def setup(client):
-    client.add_cog(Prune(client))
+    client.add_cog(PruneCommand(client))
