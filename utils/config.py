@@ -11,9 +11,12 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
+import yaml
 
-get_token = # os.environ['TOKEN'] or TOKEN
-get_tgg_token = # os.environ['TGGTOKEN'] or top.gg TOKEN
-get_prefix = # Prefix
-get_owner = # os.environ['OWNER'] or Owner's User ID
-get_password = # os.environ['PASSWORD'] or Password
+config = open("config.yml", "r")
+var = yaml.load(config, Loader = yaml.FullLoader)
+get_token = var["token"]
+get_tgg_token = "a"# os.environ['TGGTOKEN'] or top.gg TOKEN
+get_prefix = ">"# Prefix
+get_owner = "a"# os.environ['OWNER'] or Owner's User ID
+get_password = "a"# os.environ['PASSWORD'] or Password
