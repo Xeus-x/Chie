@@ -34,12 +34,15 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
     event_logger.INFO(__name__, '{0.user} is online.'.format(client))
 
-
+cogs = [
+    path_commands + "miscellaneous.choose_command",
+    path_commands + "miscellaneous.dice_command",
+    path_commands + "miscellaneous.ping_command",
+    path_commands + "miscellaneous.say_command"
+]
 # Loads Command Cogs
-client.load_extension(path_commands + "miscellaneous.choose_command")
-client.load_extension(path_commands + "miscellaneous.dice_command")
-client.load_extension(path_commands + "miscellaneous.ping_command")
-client.load_extension(path_commands + "miscellaneous.say_command")
+for command in cogs:
+    client.load_extension(command)
 
 client.load_extension(path_commands + "moderation.prune_command")
 
