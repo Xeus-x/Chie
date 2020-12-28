@@ -1,4 +1,8 @@
-TOKEN: "Your Token here"
+# Change to false if you want to use the variables below
+use_system_environment: true
+
+# Variables
+TOKEN: "Your Bot Token here"
 TGGTOKEN: "Your Top.gg Token here"
 PREFIX: "Prefix"
 OWNERID: "Your Discord User ID here"

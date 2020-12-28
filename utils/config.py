@@ -12,6 +12,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
+import os
 import yaml
 
 def __parse(var):
@@ -21,7 +22,16 @@ def __parse(var):
 
     return val
 
-get_token = __parse("TOKEN")
-get_tgg_token = __parse("TGGTOKEN")
-get_prefix = __parse("PREFIX")
-get_owner = __parse("OWNERID")
+switch = "use_system_environment"
+
+if __parse(switch) == True:
+    get_token = os.environ["TOKEN"]
+    get_tgg_token = os.environ["TGGTOKEN"]
+    get_prefix = os.environ["PREFIX"]
+    get_owner = os.environ["OWNERID"]
+
+elif __parse(switch) == False:
+    get_token = __parse("TOKEN")
+    get_tgg_token = __parse("TGGTOKEN")
+    get_prefix = __parse("PREFIX")
+    get_owner = __parse("OWNERID")
