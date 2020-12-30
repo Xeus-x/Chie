@@ -1,0 +1,8 @@
+bot:
+  name: "Chie"
+  github: "https://github.com/Nhalrath/Chie"
+
+version:
+  MAJOR: 0
+  MINOR: 2
+  REVISION: 0
