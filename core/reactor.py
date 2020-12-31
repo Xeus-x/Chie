@@ -13,21 +13,24 @@
 #   limitations under the License.
 
 import discord
-
 from discord.ext import commands
-from core import reactor as core
-from utils import config
-from utils import event_logger
 
-# Variables
-token = config.get_token
-prefix = config.get_prefix
-intents = discord.Intents().all()
-client = commands.Bot(prefix, intents = intents)
+path_commands = "cogs.commands."
+cogs = [
+    path_commands + "miscellaneous.choose_command",
+    path_commands + "miscellaneous.dice_command",
+    path_commands + "miscellaneous.ping_command",
+    path_commands + "miscellaneous.say_command",
+    path_commands + "moderation.prune_command"
+        ]
 
-@client.event
-async def on_ready():
-    await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
-    event_logger.INFO(__name__, '{0.user} is online.'.format(client))
+cogs_debug = []
 
-core.startup(client, token)
+
+def startup(client, token):
+    client.remove_command("help")
+
+    for command in cogs:
+        client.load_extension(command)
+
+    client.run(token)
