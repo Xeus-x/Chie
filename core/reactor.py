@@ -15,13 +15,22 @@
 import discord
 from discord.ext import commands
 
-class SayCommand(commands.Cog):
-    def __init__(self, client):
-        self.client = client
+path_commands = "cogs.commands."
+cogs = [
+    path_commands + "miscellaneous.choose_command",
+    path_commands + "miscellaneous.dice_command",
+    path_commands + "miscellaneous.ping_command",
+    path_commands + "miscellaneous.say_command",
+    path_commands + "moderation.prune_command"
+        ]
 
-    @commands.command()
-    async def say(self, ctx, *, msg):
-        await ctx.send(msg)
+cogs_debug = []
 
-def setup(client):
-    client.add_cog(SayCommand(client))
+
+def startup(client, token):
+    client.remove_command("help")
+
+    for command in cogs:
+        client.load_extension(command)
+
+    client.run(token)
