@@ -19,12 +19,12 @@ do daily commands, and more! Also, other parameters can give you access to sever
 
 ## Bot Info
 Name: Chie\
-Version: 0.1.1\
+Version: 0.2.0\
 Library: discord.py\
 Commands: -
 
 
-
+<!--
 ## Commands
 #### Bot Status:
 * ping - Shows the client and websocket ping.
@@ -71,7 +71,7 @@ Commands: -
 * commission - Accept a commission to receive money or exp.
 
 ...
-
+-->
 
 
 # More Info:
