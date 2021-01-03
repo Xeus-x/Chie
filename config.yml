@@ -1,5 +1,5 @@
-# Change to false if you want to use the variables below
 use_system_environment: true
+use_sharding: false
 
 # Variables
 TOKEN: "Your Bot Token here"
