@@ -26,6 +26,7 @@ def __parse(var):
     return val
 
 switch = "use_system_environment"
+sharding = __parse("use_sharding")
 
 if __parse(switch) == True:
     get_token = os.environ["TOKEN"]
