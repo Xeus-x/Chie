@@ -17,7 +17,7 @@ import discord
 from discord.ext import commands
 from core import reactor as core
 from utils import config
-from utils import event_logger
+from utils import event_logger as logger
 
 # Variables
 token = config.get_token
@@ -27,7 +27,7 @@ shards = config.shards
 
 if config.sharding == True:
     commands.AutoShardedBot(prefix, shard_count = shards, intents = intents)
-    event_logger.INFO(__name__, "Generated %d shards" % shards)
+    logger.INFO(__name__, "Generated %d shards" % shards)
 
 elif config.sharding == False:
     commands.Bot(prefix, intents = intents)
@@ -37,6 +37,6 @@ client = commands.Bot(prefix, intents = intents)
 @client.event
 async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
-    event_logger.INFO(__name__, '{0.user} is online.'.format(client))
+    logger.INFO(__name__, '{0.user} is online.'.format(client))
 
 core.startup(client, token)
