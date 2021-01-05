@@ -23,11 +23,13 @@ from utils import event_logger
 token = config.get_token
 prefix = config.get_prefix
 intents = discord.Intents().all()
+shards = config.shards
 
 if config.sharding == True:
-        commands.AutoShardedBot(prefix, shard_count = 5, intents = intents)
+    commands.AutoShardedBot(prefix, shard_count = shards, intents = intents)
+    event_logger.INFO(__name__, "Generated %d shards" % shards)
 
-elif config.use_sharding == False:
+elif config.sharding == False:
     commands.Bot(prefix, intents = intents)
 
 client = commands.Bot(prefix, intents = intents)

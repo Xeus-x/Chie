@@ -27,6 +27,7 @@ def __parse(var):
 
 switch = "use_system_environment"
 sharding = __parse("use_sharding")
+shards = __parse("shard_count")
 
 if __parse(switch) == True:
     get_token = os.environ["TOKEN"]

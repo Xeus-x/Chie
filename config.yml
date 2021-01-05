@@ -2,7 +2,9 @@ use_system_environment: true
 use_sharding: false
 
 # Variables
-TOKEN: "Your Bot Token here"
+TOKEN: "Your Token here"
 TGGTOKEN: "Your Top.gg Token here"
-PREFIX: "Prefix"
+PREFIX: "Your Prefix here"
 OWNERID: "Your Discord User ID here"
+
+shard_count: 0
