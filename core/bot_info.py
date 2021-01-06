@@ -12,20 +12,11 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import yaml
+name = "Chie"
+github = "https://github.com/Nhalrath/Chie"
 
-def __parse(pri, sub):
-    config_variables = open("bot_info.yml", "r")
-    parsed_yaml = yaml.load(config_variables, Loader = yaml.FullLoader)
-    val = parsed_yaml[pri][sub]
-
-    return val
-
-name = __parse("bot", "name")
-github = __parse("bot", "github")
-
-version_MAJOR = __parse("version", "MAJOR")
-version_MINOR = __parse("version", "MINOR")
-version_REVISION = __parse("version", "REVISION")
+version_MAJOR = 0
+version_MINOR = 2
+version_REVISION = 0
 
 version_STRING = "v%d.%d.%d" % (version_MAJOR, version_MINOR, version_REVISION)
