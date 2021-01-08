@@ -15,36 +15,28 @@
 import discord
 
 from discord.ext import commands
+from core import reactor as core
 from utils import config
-from utils import event_logger
+from utils import event_logger as logger
 
 # Variables
-intents = discord.Intents().all()
+token = config.get_token
 prefix = config.get_prefix
+intents = discord.Intents().all()
+shards = config.shards
+
+if config.sharding == True:
+    commands.AutoShardedBot(prefix, shard_count = shards, intents = intents)
+    logger.INFO(__name__, "Generated %d shards" % shards)
+
+elif config.sharding == False:
+    commands.Bot(prefix, intents = intents)
 
 client = commands.Bot(prefix, intents = intents)
-path_commands = "cogs.commands."
-token = config.get_token
-
-# Removes built-in command
-client.remove_command("help")
 
 @client.event
 async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
-    event_logger.INFO(__name__, '{0.user} is online.'.format(client))
+    logger.INFO(__name__, '{0.user} is online.'.format(client))
 
-cogs = [
-    path_commands + "miscellaneous.choose_command",
-    path_commands + "miscellaneous.dice_command",
-    path_commands + "miscellaneous.ping_command",
-    path_commands + "miscellaneous.say_command"
-]
-# Loads Command Cogs
-for command in cogs:
-    client.load_extension(command)
-
-client.load_extension(path_commands + "moderation.prune_command")
-
-# Startup
-client.run(token)
+core.startup(client, token)

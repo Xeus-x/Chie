@@ -16,12 +16,18 @@ import discord
 from discord.ext import commands
 
 path_commands = "cogs.commands."
-cogs = [
+path_listeners = "cogs.event_listeners."
+
+cogs_commands = [
     path_commands + "miscellaneous.choose_command",
     path_commands + "miscellaneous.dice_command",
     path_commands + "miscellaneous.ping_command",
     path_commands + "miscellaneous.say_command",
     path_commands + "moderation.prune_command"
+        ]
+
+cogs_listeners = [
+    path_listeners + "topGG"
         ]
 
 cogs_debug = []
@@ -30,7 +36,10 @@ cogs_debug = []
 def startup(client, token):
     client.remove_command("help")
 
-    for command in cogs:
+    for listener in cogs_listeners:
+        client.load_extension(listener)
+
+    for command in cogs_commands:
         client.load_extension(command)
 
     client.run(token)

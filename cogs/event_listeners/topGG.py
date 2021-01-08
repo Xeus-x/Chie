@@ -12,11 +12,19 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-name = "Chie"
-github = "https://github.com/Nhalrath/Chie"
+import config
+import dbl
+import discord
+from discord.ext import commands
 
-version_MAJOR = 0
-version_MINOR = 2
-version_REVISION = 0
+class TopGG(commands.Cog):
+    def __init__(self, client):
+        self.client = client
+        self.token = config.get_tgg_token
+        self.dblpy = dbl.DBLClient(self.client, self.token, autopost=True)
 
-version_STRING = "v%d.%d.%d" % (version_MAJOR, version_MINOR, version_REVISION)
+    async def on_guild_post():
+        print("Server count posted successfully")
+
+def setup(bot):
+    bot.add_cog(TopGG(bot))
