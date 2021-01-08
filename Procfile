@@ -1,1 +1,1 @@
-worker: chie.py
+worker: python chie.py
