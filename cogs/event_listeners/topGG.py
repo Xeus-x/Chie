@@ -12,10 +12,10 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import config
 import dbl
 import discord
 from discord.ext import commands
+from utils import config
 
 class TopGG(commands.Cog):
     def __init__(self, client):
