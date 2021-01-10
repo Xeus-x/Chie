@@ -26,13 +26,11 @@ intents = discord.Intents().all()
 shards = config.shards
 
 if config.sharding == True:
-    commands.AutoShardedBot(prefix, shard_count = shards, intents = intents)
+    client = commands.AutoShardedBot(prefix, shard_count = shards, intents = intents)
     logger.INFO(__name__, "Generated %d shards" % shards)
 
 elif config.sharding == False:
-    commands.Bot(prefix, intents = intents)
-
-client = commands.Bot(prefix, intents = intents)
+    client = commands.Bot(prefix, intents = intents)
 
 @client.event
 async def on_ready():
