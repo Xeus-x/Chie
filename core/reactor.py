@@ -23,6 +23,7 @@ cogs_commands = [
     path_commands + "miscellaneous.dice_command",
     path_commands + "miscellaneous.ping_command",
     path_commands + "miscellaneous.say_command",
+    path_commands + "informations.help_command",
     path_commands + "moderation.prune_command"
         ]
 
