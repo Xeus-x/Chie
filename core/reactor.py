@@ -24,11 +24,15 @@ cogs_commands = [
     path_commands + "miscellaneous.ping_command",
     path_commands + "miscellaneous.say_command",
     path_commands + "informations.help_command",
+
+    path_commands + "imageboards.safebooru",
+
     path_commands + "moderation.prune_command"
         ]
 
 cogs_listeners = [
-    path_listeners + "topGG"
+    path_listeners + "topGG",
+    path_listeners + "error_listener"
         ]
 
 cogs_debug = []
