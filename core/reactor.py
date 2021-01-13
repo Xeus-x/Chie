@@ -26,6 +26,7 @@ cogs_commands = [
     path_commands + "informations.help_command",
 
     path_commands + "imageboards.safebooru",
+    path_commands + "imageboards.danbooru",
 
     path_commands + "moderation.prune_command"
         ]
