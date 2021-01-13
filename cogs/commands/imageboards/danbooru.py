@@ -27,12 +27,35 @@ class DanbooruCommand(commands.Cog):
 
     @commands.command()
     async def danbooru(self, ctx, *, tag = None):
+        def embedBuilder(image, tag):
+            embed = discord.Embed(
+                title = "Danbooru",
+                color = 0xFFC0CB,
+            )
+            embed.add_field(
+                name = "Tags",
+                value = tag,
+                inline = False
+            )
+            embed.set_image(
+                url = image
+            )
+            embed.set_footer(
+                text = ctx.author,
+                icon_url = ctx.author.avatar_url
+            )
+
+            return embed
+            
         if ctx.channel.is_nsfw():
             if tag == None:
                 request = requests.get("%s/posts/random.json" % (imageboard))
-                result = request.json()['file_url']
+                image = request.json()['file_url']
+                tags = request.json()['tag_string']
+
+                embed = embedBuilder(image, tags)
                 
-                await ctx.send(result)
+                await ctx.send(embed = embed)
 
             else:
                 search = requests.get("%s/tags.json?search[name_matches]=%s*" % (imageboard, tag[0]))
@@ -40,8 +63,11 @@ class DanbooruCommand(commands.Cog):
                 filtered_result = result[random.randrange(len(result))]['id']
                 link = requests.get("%s/posts/%s.json" % (imageboard, filtered_result))
                 image = link.json()['file_url']
+                tags = link.json()['tag_string']
 
-                await ctx.send(image)
+                embed = embedBuilder(image, tags)
+
+                await ctx.send(embed = embed)
         
         else:
             await ctx.send("This command is only available for NSFW channels.")

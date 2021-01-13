@@ -16,6 +16,7 @@ import discord
 import json
 import random
 import requests
+from core import bot_info
 from utils import json_parser
 from discord.ext import commands
 
@@ -27,11 +28,34 @@ class SafebooruCommand(commands.Cog):
 
     @commands.command()
     async def safebooru(self, ctx, *, tag = None):
+        def embedBuilder(image, tag):
+            embed = discord.Embed(
+                title = "Safebooru",
+                color = 0x008000,
+            )
+            embed.add_field(
+                name = "Tags",
+                value = tag,
+                inline = False
+            )
+            embed.set_image(
+                url = image
+            )
+            embed.set_footer(
+                text = ctx.author,
+                icon_url = ctx.author.avatar_url
+            )
+
+            return embed
+
         if tag == None:
             request = requests.get("%s/posts/random.json" % (imageboard))
-            result = request.json()['file_url']
+            image = request.json()['file_url']
+            tags = request.json()['tag_string'].replace(" ", ", ")
             
-            await ctx.send(result)
+            embed = embedBuilder(image, tags)
+
+            await ctx.send(embed = embed)
 
         else:
             search = requests.get("%s/tags.json?search[name_matches]=%s*" % (imageboard, tag[0]))
@@ -39,8 +63,11 @@ class SafebooruCommand(commands.Cog):
             filtered_result = result[random.randrange(len(result))]['id']
             link = requests.get("%s/posts/%s.json" % (imageboard, filtered_result))
             image = link.json()['file_url']
+            tags = link.json()['tag_string'].replace(" ", ", ")
 
-            await ctx.send(image)
+            embed = embedBuilder(image, tags)
+
+            await ctx.send(embed = embed)
 
 def setup(client):
     client.add_cog(SafebooruCommand(client))
