@@ -14,24 +14,33 @@
 #45 Lines
 import logging
 
-def debugInit(msg):
+def debugInit(logger, level, loggerType, msg):
     logger = logging.getLogger(logger)
+    logger.setLevel(level)
     handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a')
     handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)s | %(name)s | %(message)s'))
     logger.addHandler(handler) 
+    if loggerType == 1:
+        logger.info(msg)
+    elif loggerType == 2:
+        logger.debug(msg)
+    elif loggerType == 3:
+        logger.warning(msg)
+    else:
+        print("Logger: unsupported type")
     print(msg)
 
 def INFO(logger, msg):
-    logger = debugInit(msg)
-    logger.setLevel(logging.INFO)
-    logger.info(msg)
+    level = logging.INFO
+    loggerType = 1
+    logger = debugInit(logger, level, loggerType, msg)
 
 def DEBUG(logger, msg):
-    logger = debugInit(msg)
-    logger.setLevel(logging.DEBUG)
-    logger.debug(msg)
+    level = logging.DEBUG
+    loggerType = 2
+    logger = debugInit(logger, level, loggerType, msg)
 
 def WARNING(logger, msg):
-    logger = debugInit(msg)
-    logger.setLevel(logging.WARNING)
-    logger.warning(msg)
+    level = logging.WARNING
+    loggerType = 3
+    logger = debugInit(logger, level, loggerType, msg)
