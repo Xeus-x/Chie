@@ -13,8 +13,7 @@
 #   limitations under the License.
 
 import discord
-import datetime
-
+from datetime import datetime
 from discord.ext import commands
 from core.reactor import startup
 from chieUtils import config
