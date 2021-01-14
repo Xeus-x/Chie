@@ -17,15 +17,8 @@ import datetime
 
 from discord.ext import commands
 from core.reactor import startup
-from utils import config
-from utils import event_logger as logger
-
-
-@client.event
-async def on_ready():
-    print(f"Live {datetime.now().strftime('%m-%d-%Y')}")
-    await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
-    logger.INFO(__name__, '{0.user} is online.'.format(client))
+from chieUtils import config
+from chieUtils import event_logger as logger
 
 if __name__ == "__main__":
     if config.sharding == True:
@@ -34,5 +27,11 @@ if __name__ == "__main__":
 
     elif config.sharding == False:
         client = commands.Bot(config.get_prefix, intents = discord.Intents().all())
+
+@client.event
+async def on_ready():
+    print(f"Live {datetime.now().strftime('%m-%d-%Y')}")
+    await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
+    logger.INFO(__name__, '{0.user} is online.'.format(client))
 
 startup(client, config.get_token)
