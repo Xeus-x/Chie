@@ -13,9 +13,8 @@
 #   limitations under the License.
 
 import discord
-
 from discord.ext import commands
-from core import reactor as core
+from core.reactor import startup
 from utils import config
 from utils import event_logger as logger
 
@@ -37,4 +36,4 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
     logger.INFO(__name__, '{0.user} is online.'.format(client))
 
-core.startup(client, token)
+startup(client, token)
