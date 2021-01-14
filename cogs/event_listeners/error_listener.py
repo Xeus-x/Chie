@@ -13,7 +13,7 @@
 #   limitations under the License.
 
 import discord
-import datetime
+from datetime import timedelta
 from discord.ext import commands
 
 class ErrorListener(commands.Cog):
