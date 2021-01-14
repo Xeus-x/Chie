@@ -13,6 +13,7 @@
 #   limitations under the License.
 
 import discord
+import datetime
 from discord.ext import commands
 
 class ErrorListener(commands.Cog):
@@ -25,11 +26,7 @@ class ErrorListener(commands.Cog):
             return
             
         elif isinstance(error, commands.CommandOnCooldown):
-            def convert(seconds):
-                minute, second = divmod(seconds, 60)
-                hour, minute = divmod(min, 60)
-                return "**%dh**, **%02dm**, **%02ds**" % (hour, minute, second)
-            await ctx.send("Not too fast! You can use this command again in {}".format(convert(error.retry_after)))
+            await ctx.send("Not too fast! You can use this command again in {}".format(datetime.timedelta(seconds=error.retry_after).strftime("**%H**, **%M**, **%S**")))
 
 def setup(client):
     client.add_cog(ErrorListener(client))
