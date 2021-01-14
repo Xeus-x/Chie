@@ -20,13 +20,12 @@ from core.reactor import startup
 from chieUtils import config
 from chieUtils import event_logger as logger
 
-if __name__ == "__main__":
-    if config.sharding == True:
-        client = commands.AutoShardedBot(config.get_prefix, shard_count = config.shards, intents = discord.Intents().all())
-        logger.INFO(__name__, f"Generated {config.shards} shards")
+if config.sharding == True:
+    client = commands.AutoShardedBot(config.get_prefix, shard_count = config.shards, intents = discord.Intents().all())
+    logger.INFO(__name__, f"Generated {config.shards} shards")
 
-    elif config.sharding == False:
-        client = commands.Bot(config.get_prefix, intents = discord.Intents().all())
+elif config.sharding == False:
+    client = commands.Bot(config.get_prefix, intents = discord.Intents().all())
 
 @client.event
 async def on_ready():
