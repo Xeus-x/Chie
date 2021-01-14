@@ -12,17 +12,8 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import discord
-import random
-from discord.ext import commands
+import json
 
-class DiceCommand(commands.Cog):
-    def __init__(self, client):
-        self.client = client
-
-    @commands.command(aliases = ['roll'])
-    async def dice(self, ctx, face = 6):
-        await ctx.send(f':game_die:{random.randint(1, face)}')
-
-def setup(client):
-    client.add_cog(DiceCommand(client))
+def parse(obj):
+    data = json.dumps(obj, sort_keys=True, indent=4)
+    return data
