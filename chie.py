@@ -20,7 +20,6 @@ from core.reactor import startup
 from utils import config
 from utils import event_logger as logger
 
-
 @client.event
 async def on_ready():
     print(f"Live {datetime.now().strftime('%m-%d-%Y')}")
@@ -35,4 +34,4 @@ if __name__ == "__main__":
     elif config.sharding == False:
         client = commands.Bot(config.get_prefix, intents = discord.Intents().all())
 
-startup(client, config.get_token)
+    startup(client, config.get_token)
