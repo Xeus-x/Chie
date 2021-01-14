@@ -20,7 +20,7 @@ from core.reactor import startup
 from utils import config
 from utils import event_logger as logger
 
-client = None
+client = commands.Bot()
 
 @client.event
 async def on_ready():
