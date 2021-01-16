@@ -22,7 +22,7 @@ class DiceCommand(commands.Cog):
 
     @commands.command(aliases = ['roll'])
     async def dice(self, ctx, face = 6):
-        await ctx.send(f':game_die:{random.randint(1, face)}')
+        await ctx.send(f':game_die:{random.randint(1, face)} (1-{face})')
 
 def setup(client):
     client.add_cog(DiceCommand(client))
