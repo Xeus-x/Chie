@@ -16,8 +16,8 @@ import discord
 import json
 import random
 import requests
-from utils import event_logger as logger
-from utils import json_parser
+from chieUtils import event_logger as logger
+from chieUtils import json_parser
 from discord.ext import commands
 
 imageboard = "https://danbooru.donmai.us"
