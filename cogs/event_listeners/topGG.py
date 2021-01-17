@@ -15,7 +15,7 @@
 import dbl
 import discord
 from discord.ext import commands
-from utils import config
+from chieUtils import config
 
 class TopGG(commands.Cog):
     def __init__(self, client):

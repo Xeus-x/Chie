@@ -14,7 +14,7 @@
 
 import discord
 from discord.ext import commands
-from utils import event_logger
+from chieUtils import event_logger
 
 class PruneCommand(commands.Cog):
     def __init__(self, client):

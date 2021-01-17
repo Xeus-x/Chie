@@ -22,7 +22,6 @@ def __parse(var):
     config_variables = open("config.yml", "r")
     parsed_yaml = yaml.load(config_variables, Loader = yaml.FullLoader)
     val = parsed_yaml[var]
-
     return val
 
 switch = "use_system_environment"

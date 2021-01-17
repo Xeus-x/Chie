@@ -11,35 +11,36 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-
+#45 Lines
 import logging
 
-def INFO(logger, msg):
+def debugInit(logger, level, loggerType, msg):
     logger = logging.getLogger(logger)
-    logger.setLevel(logging.INFO)
+    logger.setLevel(level)
     handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a')
     handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)s | %(name)s | %(message)s'))
-    logger.addHandler(handler)
-
-    logger.info(msg)
+    logger.addHandler(handler) 
+    if loggerType == 1:
+        logger.info(msg)
+    elif loggerType == 2:
+        logger.debug(msg)
+    elif loggerType == 3:
+        logger.warning(msg)
+    else:
+        print("Logger: unsupported type")
     print(msg)
+
+def INFO(logger, msg):
+    level = logging.INFO
+    loggerType = 1
+    logger = debugInit(logger, level, loggerType, msg)
 
 def DEBUG(logger, msg):
-    logger = logging.getLogger(logger)
-    logger.setLevel(logging.DEBUG)
-    handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a')
-    handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)s | %(name)s | %(message)s'))
-    logger.addHandler(handler)
-
-    logger.debug(msg)
-    print(msg)
+    level = logging.DEBUG
+    loggerType = 2
+    logger = debugInit(logger, level, loggerType, msg)
 
 def WARNING(logger, msg):
-    logger = logging.getLogger(logger)
-    logger.setLevel(logging.WARNING)
-    handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a')
-    handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)s | %(name)s | %(message)s'))
-    logger.addHandler(handler)
-
-    logger.warning(msg)
-    print(msg)
+    level = logging.WARNING
+    loggerType = 3
+    logger = debugInit(logger, level, loggerType, msg)

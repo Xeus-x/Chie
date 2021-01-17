@@ -13,28 +13,23 @@
 #   limitations under the License.
 
 import discord
-
+from datetime import datetime
 from discord.ext import commands
-from core import reactor as core
-from utils import config
-from utils import event_logger as logger
-
-# Variables
-token = config.get_token
-prefix = config.get_prefix
-intents = discord.Intents().all()
-shards = config.shards
+from core.reactor import startup
+from chieUtils import config
+from chieUtils import event_logger as logger
 
 if config.sharding == True:
-    client = commands.AutoShardedBot(prefix, shard_count = shards, intents = intents)
-    logger.INFO(__name__, "Generated %d shards" % shards)
+    client = commands.AutoShardedBot(config.get_prefix, shard_count = config.shards, intents = discord.Intents().all())
+    logger.INFO(__name__, f"Generated {config.shards} shards")
 
 elif config.sharding == False:
-    client = commands.Bot(prefix, intents = intents)
+    client = commands.Bot(config.get_prefix, intents = discord.Intents().all())
 
 @client.event
 async def on_ready():
+    print(f"Live {datetime.now().strftime('%m-%d-%Y')}")
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
     logger.INFO(__name__, '{0.user} is online.'.format(client))
 
-core.startup(client, token)
+startup(client, config.get_token)

@@ -14,7 +14,6 @@
 
 import json
 
-def read(dir):
-    with open(dir, 'r') as f:
-        val = json.load(f)
-    return val
+def parse(obj):
+    data = json.dumps(obj, sort_keys=True, indent=4)
+    return data
