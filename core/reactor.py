@@ -22,6 +22,8 @@ cogs_commands = ["miscellaneous.choose_command",
                  "miscellaneous.ping_command",
                  "miscellaneous.say_command",
                  "informations.help_command",
+                 "informations.userinfo_command",
+                 "informations.guildinfo_command",
                  "imageboards.safebooru",
                  "imageboards.danbooru",
                  "moderation.prune_command"]
