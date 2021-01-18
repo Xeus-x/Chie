@@ -7,7 +7,7 @@
 
 ## Bot Info
 Name: Chie\
-Version: 0.3.3\
+Version: 0.1.0<!--do not increment unless it is released-->\
 Library: discord.py\
 Commands: -
 
