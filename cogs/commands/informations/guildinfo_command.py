@@ -35,7 +35,7 @@ class GuildInfoCommand(commands.Cog):
             inline = False
         )
         embed.add_field(
-            name = "Date Joined",
+            name = "Date Created",
             value = ctx.guild.created_at.strftime("%B %d, %Y at %H:%m"),
             inline = False
         )

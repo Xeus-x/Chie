@@ -16,29 +16,19 @@ import discord
 from discord.ext import commands
 from core import bot_info
 
-class UserInfoCommand(commands.Cog):
+class AvatarCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(aliases = ["profile"])
-    async def userinfo(self, ctx, mention:discord.Member=None):
+    @commands.command()
+    async def avatar(self, ctx, mention:discord.Member=None):
         def embedBuilder(user):
             embed = discord.Embed(
-                title = user.name + "'s Profile",
+                title = user.name + "'s Avatar",
                 color = 0xff0000
             )
-            embed.set_thumbnail(
+            embed.set_image(
                 url = user.avatar_url
-            )
-            embed.add_field(
-                name = "ID",
-                value = user.id,
-                inline = False
-            )
-            embed.add_field(
-                name = "Date Created",
-                value = user.created_at.strftime("%B %d, %Y at %H:%m"),
-                inline = False
             )
             embed.set_footer(
                 text = ctx.author,
@@ -55,4 +45,4 @@ class UserInfoCommand(commands.Cog):
         await ctx.send(embed = embed)
 
 def setup(client):
-    client.add_cog(UserInfoCommand(client))
+    client.add_cog(AvatarCommand(client))
