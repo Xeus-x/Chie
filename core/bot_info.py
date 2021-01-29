@@ -16,7 +16,7 @@ name = "Chie"
 github = "https://github.com/Nhalrath/Chie"
 
 version_MAJOR = 0
-version_MINOR = 3
-version_REVISION = 1
+version_MINOR = 1
+version_REVISION = 0
 
 version_STRING = "v%d.%d.%d" % (version_MAJOR, version_MINOR, version_REVISION)

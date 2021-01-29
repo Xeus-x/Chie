@@ -17,11 +17,14 @@ from discord.ext import commands
 
 path_listeners = "cogs.event_listeners."
 
-cogs_commands = ["miscellaneous.choose_command",
+cogs_commands = ["miscellaneous.avatar_command",
+                 "miscellaneous.choose_command",
                  "miscellaneous.dice_command",
                  "miscellaneous.ping_command",
                  "miscellaneous.say_command",
                  "informations.help_command",
+                 "informations.userinfo_command",
+                 "informations.guildinfo_command",
                  "imageboards.safebooru",
                  "imageboards.danbooru",
                  "moderation.prune_command"]
