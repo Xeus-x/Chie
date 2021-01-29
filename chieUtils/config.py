@@ -15,8 +15,8 @@
 # This file may be stored in the utils folder, but there's actually
 # no need to use this in other files aside from chie.py
 
-import os
 import yaml
+import os
 
 def __parse(var):
     config_variables = open("config.yml", "r")
