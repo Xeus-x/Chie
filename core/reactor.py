@@ -25,6 +25,7 @@ cogs_commands = ["miscellaneous.avatar_command",
                  "informations.help_command",
                  "imageboards.safebooru",
                  "imageboards.danbooru",
+                 "imageboards.actions.hug_command",
                  "moderation.prune_command"]
 
 def startup(client, token):
