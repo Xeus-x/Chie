@@ -25,4 +25,4 @@ class KickCommand(commands.Cog):
         await member.kick(reason=reason)
 
 def setup(client):
-    client.add_cog(Kick(client))
+    client.add_cog(KickCommand(client))
