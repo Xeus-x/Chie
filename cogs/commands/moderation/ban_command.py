@@ -25,4 +25,4 @@ class BanCommand(commands.Cog):
         await member.ban(reason=reason)
 
 def setup(client):
-    client.add_cog(Ban(client))
+    client.add_cog(BanCommand(client))
