@@ -19,31 +19,31 @@ from discord.ext import commands
 class HugCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
-        
-    def embedBuilder(self, title):
-        image = requests.get("https://api.kurosama.tk/v1/hug")
-        url = image.json()[0]
-        
-        embed = discord.Embed(
-            title = title,
-            color = 0xFFC0CB
-        )
-        embed.set_image(
-            url = url
-        )
-        embed.set_footer(
-            text = ctx.author,
-            icon_url = ctx.author.avatar_url
-        )
 
-        return embed
-    
     @commands.command()
     async def hug(self, ctx, mention:discord.Member=None):
+        image = requests.get("https://api.kurosama.tk/v1/hug")
+        data = image.json()[0]
+
+        def embedBuilder(title):
+            embed = discord.Embed(
+                title = title,
+                color = 0xFFC0CB
+            )
+            embed.set_image(
+                url = data
+            )
+            embed.set_footer(
+                text = ctx.author,
+                icon_url = ctx.author.avatar_url
+            )
+
+            return embed
+
         if mention == None:
-            await ctx.send(embed = self.embedBuilder("\**Hugs you\**"))
+            await ctx.send(embed = embedBuilder("\**Hugs you\**"))
         else:
-            await ctx.send(embed = self.embedBuilder("%s hugs %s..." % (ctx.author.display_name, mention.display_name)))
+            await ctx.send(embed = embedBuilder("%s hugs %s..." % (ctx.author.display_name, mention.display_name)))
 
 def setup(client):
     client.add_cog(HugCommand(client))

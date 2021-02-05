@@ -20,10 +20,12 @@ from chieUtils import event_logger as logger
 from chieUtils import json_parser
 from discord.ext import commands
 
+imageboard = "https://danbooru.donmai.us"
+status = requests.get(imageboard).status_code
+
 class DanbooruCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
-        self.imageboard = imageboard = "https://danbooru.donmai.us"
 
     @commands.command()
     async def danbooru(self, ctx, *, tag = None):
@@ -47,20 +49,20 @@ class DanbooruCommand(commands.Cog):
 
             return embed
 
-        if requests.get(self.imageboard).status_code == 200:
+        if status == 200:
             if ctx.channel.is_nsfw():
-                if not tag:
-                    request = requests.get("%s/posts/random.json" % (self.imageboard))
+                if tag == None:
+                    request = requests.get("%s/posts/random.json" % (imageboard))
                     image = request.json()['file_url']
                     tags = request.json()['tag_string']
                     embed = embedBuilder(image, tags)
 
                     await ctx.send(embed = embed)
                 else:
-                    search = requests.get("%s/tags.json?search[name_matches]=%s*" % (self.imageboard, tag[0]))
+                    search = requests.get("%s/tags.json?search[name_matches]=%s*" % (imageboard, tag[0]))
                     result = search.json()
                     filtered_result = result[random.randrange(len(result))]['id']
-                    link = requests.get("%s/posts/%s.json" % (self.imageboard, filtered_result))
+                    link = requests.get("%s/posts/%s.json" % (imageboard, filtered_result))
                     image = link.json()['file_url']
                     tags = link.json()['tag_string']
                     embed = embedBuilder(image, tags)

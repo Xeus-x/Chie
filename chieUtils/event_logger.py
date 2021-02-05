@@ -27,7 +27,7 @@ def debugInit(logger, level, loggerType, msg):
     elif loggerType == 3:
         logger.warning(msg)
     else:
-        raise ("Logger: unsupported type")
+        print("Logger: unsupported type")
     print(msg)
 
 def INFO(logger, msg):
