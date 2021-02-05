@@ -13,7 +13,6 @@
 #   limitations under the License.
 
 import discord
-import requests
 from discord.ext import commands
 
 class SlapCommand(commands.Cog):
@@ -22,8 +21,6 @@ class SlapCommand(commands.Cog):
 
     @commands.command()
     async def slap(self, ctx, mention:discord.Member=None):
-        image = requests.get("https://api.kurosama.tk/v1/slap")
-        data = image.json()[0]
 
         def embedBuilder(title):
             embed = discord.Embed(
@@ -31,7 +28,7 @@ class SlapCommand(commands.Cog):
                 color = 0xFFC0CB
             )
             embed.set_image(
-                url = data
+                url = "https://api.kurosama.tk/slap/sl3.gif"
             )
             embed.set_footer(
                 text = ctx.author,

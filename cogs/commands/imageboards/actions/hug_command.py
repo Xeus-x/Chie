@@ -13,7 +13,6 @@
 #   limitations under the License.
 
 import discord
-import requests
 from discord.ext import commands
 
 class HugCommand(commands.Cog):
@@ -22,8 +21,6 @@ class HugCommand(commands.Cog):
 
     @commands.command()
     async def hug(self, ctx, mention:discord.Member=None):
-        image = requests.get("https://api.kurosama.tk/v1/hug")
-        data = image.json()[0]
 
         def embedBuilder(title):
             embed = discord.Embed(
@@ -31,7 +28,7 @@ class HugCommand(commands.Cog):
                 color = 0xFFC0CB
             )
             embed.set_image(
-                url = data
+                url = "http://api.kurosama.tk/hugs/16.gif"
             )
             embed.set_footer(
                 text = ctx.author,
