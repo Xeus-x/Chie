@@ -20,12 +20,10 @@ from chieUtils import event_logger as logger
 from chieUtils import json_parser
 from discord.ext import commands
 
-imageboard = "https://safebooru.donmai.us"
-status = requests.get(imageboard).status_code
-
 class SafebooruCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
+        self.imageboard = "https://safebooru.donmai.us"
 
     @commands.command()
     async def safebooru(self, ctx, *, tag = None):
@@ -49,19 +47,19 @@ class SafebooruCommand(commands.Cog):
 
             return embed
 
-        if status == 200:
-            if tag == None:
-                request = requests.get("%s/posts/random.json" % (imageboard))
+        if requests.get(self.imageboard).status_code == 200:
+            if not tag:
+                request = requests.get("%s/posts/random.json" % (self.imageboard))
                 image = request.json()['file_url']
                 tags = request.json()['tag_string'].replace(" ", ", ")
                 embed = embedBuilder(image, tags)
 
                 await ctx.send(embed = embed)
             else:
-                search = requests.get("%s/tags.json?search[name_matches]=%s*" % (imageboard, tag[0]))
+                search = requests.get("%s/tags.json?search[name_matches]=%s*" % (self.imageboard, tag[0]))
                 result = search.json()
                 filtered_result = result[random.randrange(len(result))]['id']
-                link = requests.get("%s/posts/%s.json" % (imageboard, filtered_result))
+                link = requests.get("%s/posts/%s.json" % (self.imageboard, filtered_result))
                 image = link.json()['file_url']
                 tags = link.json()['tag_string'].replace(" ", ", ")
                 embed = embedBuilder(image, tags)
