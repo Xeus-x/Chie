@@ -13,32 +13,25 @@
 #   limitations under the License.
 
 import discord
+import requests
 from discord.ext import commands
-from core import bot_info
 
-class UserInfoCommand(commands.Cog):
+class HugCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(aliases = ["profile"])
-    async def userinfo(self, ctx, mention:discord.Member=None):
-        def embedBuilder(user):
+    @commands.command()
+    async def hug(self, ctx, mention:discord.Member=None):
+        image = requests.get("https://api.kurosama.tk/v1/hug")
+        data = image.json()[0]
+
+        def embedBuilder(title):
             embed = discord.Embed(
-                title = user.name + "'s Profile",
-                color = 0xff0000
+                title = title,
+                color = 0xFFC0CB
             )
-            embed.set_thumbnail(
-                url = user.avatar_url
-            )
-            embed.add_field(
-                name = "ID",
-                value = user.id,
-                inline = False
-            )
-            embed.add_field(
-                name = "Date Created",
-                value = user.created_at.strftime("%B %d, %Y at %H:%m"),
-                inline = False
+            embed.set_image(
+                url = data
             )
             embed.set_footer(
                 text = ctx.author,
@@ -46,13 +39,11 @@ class UserInfoCommand(commands.Cog):
             )
 
             return embed
-        
-        if mention == None:
-            embed = embedBuilder(ctx.author)
-        else:
-            embed = embedBuilder(mention)
 
-        await ctx.send(embed = embed)
+        if mention == None:
+            await ctx.send(embed = embedBuilder("\**Hugs you\**"))
+        else:
+            await ctx.send(embed = embedBuilder("%s hugs %s..." % (ctx.author.display_name, mention.display_name)))
 
 def setup(client):
-    client.add_cog(UserInfoCommand(client))
+    client.add_cog(HugCommand(client))

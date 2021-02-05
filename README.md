@@ -2,16 +2,31 @@
   <img src = "https://imgur.com/UFkpV0F.png" loading = "lazy" alt = "..."/>
 <p/>
 
-# Chie
+# Chie - A simple static bot for Discord
 ![GitHub](https://img.shields.io/github/license/Nhalrath/Chie)
 
-## Bot Info
-Name: Chie\
-Version: 0.1.0<!--do not increment unless it is released-->\
-Library: discord.py\
-Commands: -
+## Starting up the bot
+  It is very easy to get the bot online, all you need to do is edit the config.yml file.
+```yaml
+# Set this to "true" if you prefer using environmental variables
+use_system_environment: false
 
-## Are you planning to use this software in your own project?
-This is an open-source project and you can use it as long as you follow the [license](http://www.apache.org/licenses/LICENSE-2.0).
+# Only set this to "true" if your guild count is high enough
+use_sharding: false
+shard_count: 0
 
-I suggest that you edit most of the functions to make it more readable. (The owner too lazy to clean this up, and the whole code itself is a mess つ﹏⊂.)
+# Token is required to login to your bot
+TOKEN: "Your Token here"
+
+# This is self-explanatory
+PREFIX: "Your Prefix here"
+```
+
+## Prerequisites
+- [Python -> 3.8.6(Not higher)](https://www.python.org/downloads/release/python-386)
+- [discord.py -> 1.6.0](https://github.com/rapptz/discord.py)
+- [pyyaml -> 5.3.1](https://github.com/yaml/pyyaml)
+- [requests -> 2.25.1](https://github.com/psf/requests)
+
+<hr/>
+Goodluck~!

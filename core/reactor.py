@@ -17,7 +17,8 @@ from discord.ext import commands
 
 path_listeners = "cogs.event_listeners."
 
-cogs_commands = ["miscellaneous.choose_command",
+cogs_commands = ["miscellaneous.avatar_command",
+                 "miscellaneous.choose_command",
                  "miscellaneous.dice_command",
                  "miscellaneous.ping_command",
                  "miscellaneous.say_command",
@@ -26,6 +27,9 @@ cogs_commands = ["miscellaneous.choose_command",
                  "informations.guildinfo_command",
                  "imageboards.safebooru",
                  "imageboards.danbooru",
+                 "imageboards.actions.hug_command",
+                 "imageboards.actions.slap_command",
+                 "imageboards.actions.kiss_command",
                  "moderation.prune_command"]
 
 def startup(client, token):
