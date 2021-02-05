@@ -19,28 +19,30 @@ class KissCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    def embedBuilder(self, title):
+        image = requests.get("https://api.kurosama.tk/v1/kiss")
+        url = image.json()[0]
+
+        embed = discord.Embed(
+            title = title,
+            color = 0xFFC0CB
+        )
+        embed.set_image(
+            url = url
+        )
+        embed.set_footer(
+            text = ctx.author,
+            icon_url = ctx.author.avatar_url
+        )
+
+        return embed
+    
     @commands.command()
     async def kiss(self, ctx, mention:discord.Member=None):
-
-        def embedBuilder(title):
-            embed = discord.Embed(
-                title = title,
-                color = 0xFFC0CB
-            )
-            embed.set_image(
-                url = "http://api.kurosama.tk/kiss/k1.gif"
-            )
-            embed.set_footer(
-                text = ctx.author,
-                icon_url = ctx.author.avatar_url
-            )
-
-            return embed
-
         if mention == None:
-            await ctx.send(embed = embedBuilder("\**Kissed you\**"))
+            await ctx.send(embed = self.embedBuilder("\**Kissed you\**"))
         else:
-            await ctx.send(embed = embedBuilder("%s kissed %s..." % (ctx.author.display_name, mention.display_name)))
+            await ctx.send(embed = self.embedBuilder("%s kissed %s..." % (ctx.author.display_name, mention.display_name)))
 
 def setup(client):
     client.add_cog(KissCommand(client))

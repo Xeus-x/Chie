@@ -18,29 +18,31 @@ from discord.ext import commands
 class SlapCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
+        
+    def embedBuilder(self, title):
+        image = requests.get("https://api.kurosama.tk/v1/slap")
+        url = image.json()[0]
+
+        embed = discord.Embed(
+            title = title,
+            color = 0xFFC0CB
+        )
+        embed.set_image(
+            url = url
+        )
+        embed.set_footer(
+            text = ctx.author,
+            icon_url = ctx.author.avatar_url
+        )
+
+        return embed
 
     @commands.command()
     async def slap(self, ctx, mention:discord.Member=None):
-
-        def embedBuilder(title):
-            embed = discord.Embed(
-                title = title,
-                color = 0xFFC0CB
-            )
-            embed.set_image(
-                url = "https://api.kurosama.tk/slap/sl3.gif"
-            )
-            embed.set_footer(
-                text = ctx.author,
-                icon_url = ctx.author.avatar_url
-            )
-
-            return embed
-
         if mention == None:
-            await ctx.send(embed = embedBuilder("\**Slaps you\**"))
+            await ctx.send(embed = self.embedBuilder("\**Slaps you\**"))
         else:
-            await ctx.send(embed = embedBuilder("%s slapped %s..." % (ctx.author.display_name, mention.display_name)))
+            await ctx.send(embed = self.embedBuilder("%s slapped %s..." % (ctx.author.display_name, mention.display_name)))
 
 def setup(client):
     client.add_cog(SlapCommand(client))
