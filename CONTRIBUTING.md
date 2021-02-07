@@ -1,12 +1,16 @@
 ## Contributing Guidelines
 
 #### A brief description about this project
-* Chie is a Discord Bot similar to [Rena](https://github.com/Nhalrath/Rena), they are both made for the sake of learning and everyone is welcome to contribute.
+* Chie is a simple static bot for Discord. It does very basic stuffs like most other bots do.
+  Despite having this limitation, it will soon be relying on lots of APIs to operate in order to make up for not having a database-related modules.
 
-#### How to contribute to Rena
-* You can contribute in any way you like, be it making a new feature, improvements, etc.
-* Keep in mind that the author of this project is also novice. He would appreciate it if you don't make changes too complicated.
-* A simple summary for commit will do.
+#### How to contribute to Chie
+* You can contribute in any way you like, be it by making a new feature, improvements, etc.
+* A simple, but reasonable commit message will do(refer to the convention below).
 
-#### Additional notes
-* This is a small project, so there's no need to make a strict guideline. At least for now.
+#### Conventions
+You are not required to follow these instructions, but it would be better if you could, so that we can avoid potential complications.
+* Commit messages for editing an existing file must be all lowercased. (ex.`refactor`, `bug fixes for imageboard command`.)
+* Commit messages for a new feature or new modules must start with an uppercase character. (ex. `Add game API`, `Add game module`.)
+* Do not include different changes in a single commit.
+* Add `#TODO do domething` comments in files that requires other's attention.
