@@ -49,6 +49,11 @@ class HelpCommand(commands.Cog):
                 value = "`danbooru`, `safebooru`, `hug`, `slap`, `kiss`",
                 inline = False
             )
+            embed.add_field(
+                name = "Moderation",
+                value = "`prune`, `kick`, `ban`",
+                inline = False
+            )
             embed.set_footer(
                 text = ctx.author,
                 icon_url = ctx.author.avatar_url
