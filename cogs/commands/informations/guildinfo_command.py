@@ -14,7 +14,6 @@
 
 import discord
 from discord.ext import commands
-from core import bot_info
 
 class GuildInfoCommand(commands.Cog):
     def __init__(self, client):
