@@ -22,17 +22,22 @@ cogs_commands = ["miscellaneous.avatar_command",
                  "miscellaneous.dice_command",
                  "miscellaneous.ping_command",
                  "miscellaneous.say_command",
-                 "informations.help_command",
+
+                 "moderation.unban_command",
+                 "moderation.prune_command",
+
+                 "informations.invite_command",
                  "informations.userinfo_command",
                  "informations.guildinfo_command",
+                 "informations.help_command",
                  "informations.support_command",
-                 "informations.invite_command",
-                 "imageboards.safebooru",
-                 "imageboards.danbooru",
+
                  "imageboards.actions.hug_command",
                  "imageboards.actions.slap_command",
                  "imageboards.actions.kiss_command",
-                 "moderation.prune_command",]
+
+                 "imageboards.danbooru",
+                 "imageboards.safebooru"]
 
 def startup(client, token):
     client.remove_command("help")
