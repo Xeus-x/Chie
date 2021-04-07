@@ -25,7 +25,7 @@ class DanbooruCommand(commands.Cog):
         self.imageboard = "https://danbooru.donmai.us"
 
     @commands.command()
-    async def danbooru(self, ctx, *, tag = None):        
+    async def danbooru(self, ctx, tag = None):        
         def embedBuilder(image, tag):
             embed = discord.Embed(
                 title = "Danbooru",
@@ -56,7 +56,7 @@ class DanbooruCommand(commands.Cog):
 
                     await ctx.send(embed = embed)
                 else:
-                    request = requests.get("%s/posts/random.json?tags=%s" % (self.imageboard, tag[0]))
+                    request = requests.get("%s/posts/random.json?tags=%s" % (self.imageboard, tag))
                     image = request.json()['file_url']
                     tags = "`%s`" % (request.json()['tag_string'].replace(" ", "`, `"))
                     embed = embedBuilder(image, tags)
