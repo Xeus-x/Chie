@@ -25,7 +25,7 @@ class DanbooruCommand(commands.Cog):
         self.imageboard = "https://danbooru.donmai.us"
 
     @commands.command()
-    async def danbooru(self, ctx, *, tag = None):        
+    async def danbooru(self, ctx, tag = None):        
         def embedBuilder(image, tag):
             embed = discord.Embed(
                 title = "Danbooru",
@@ -51,17 +51,14 @@ class DanbooruCommand(commands.Cog):
                 if tag == None:
                     request = requests.get("%s/posts/random.json" % (self.imageboard))
                     image = request.json()['file_url']
-                    tags = request.json()['tag_string']
+                    tags = "`%s`" % (request.json()['tag_string'].replace(" ", "`, `"))
                     embed = embedBuilder(image, tags)
 
                     await ctx.send(embed = embed)
                 else:
-                    search = requests.get("%s/tags.json?search[name_matches]=%s*" % (self.imageboard, tag[0]))
-                    result = search.json()
-                    filtered_result = result[random.randrange(len(result))]['id']
-                    link = requests.get("%s/posts/%s.json" % (self.imageboard, filtered_result))
-                    image = link.json()['file_url']
-                    tags = link.json()['tag_string']
+                    request = requests.get("%s/posts/random.json?tags=%s" % (self.imageboard, tag))
+                    image = request.json()['file_url']
+                    tags = "`%s`" % (request.json()['tag_string'].replace(" ", "`, `"))
                     embed = embedBuilder(image, tags)
 
                     await ctx.send(embed = embed)

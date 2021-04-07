@@ -25,7 +25,7 @@ class SafebooruCommand(commands.Cog):
         self.imageboard = "https://safebooru.donmai.us"
 
     @commands.command()
-    async def safebooru(self, ctx, *, tag = None):
+    async def safebooru(self, ctx, tag = None):
         def embedBuilder(image, tag):
             embed = discord.Embed(
                 title = "Safebooru",
@@ -47,20 +47,17 @@ class SafebooruCommand(commands.Cog):
             return embed
 
         if requests.get(self.imageboard).status_code == 200:
-            if not tag:
+            if tag == None:
                 request = requests.get("%s/posts/random.json" % (self.imageboard))
                 image = request.json()['file_url']
-                tags = request.json()['tag_string'].replace(" ", ", ")
+                tags = "`%s`" % (request.json()['tag_string'].replace(" ", "`, `"))
                 embed = embedBuilder(image, tags)
 
                 await ctx.send(embed = embed)
             else:
-                search = requests.get("%s/tags.json?search[name_matches]=%s*" % (self.imageboard, tag[0]))
-                result = search.json()
-                filtered_result = result[random.randrange(len(result))]['id']
-                link = requests.get("%s/posts/%s.json" % (self.imageboard, filtered_result))
-                image = link.json()['file_url']
-                tags = link.json()['tag_string'].replace(" ", ", ")
+                request = requests.get("%s/posts/random.json?tags=%s" % (self.imageboard, tag))
+                image = request.json()['file_url']
+                tags = "`%s`" % (request.json()['tag_string'].replace(" ", "`, `"))
                 embed = embedBuilder(image, tags)
 
                 await ctx.send(embed = embed)
