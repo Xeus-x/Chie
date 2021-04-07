@@ -56,12 +56,9 @@ class SafebooruCommand(commands.Cog):
                 await ctx.send(embed = embed)
             else:
                 request = requests.get("%s/posts/random.json?tags=%s" % (self.imageboard, tag))
-                print(tag)
                 image = request.json()['file_url']
                 tags = "`%s`" % (request.json()['tag_string'].replace(" ", "`, `"))
                 embed = embedBuilder(image, tags)
-
-                await ctx.send(embed = embed)
 
                 await ctx.send(embed = embed)
         else:
