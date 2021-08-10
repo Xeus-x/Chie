@@ -15,7 +15,6 @@
 import discord
 import json
 from discord.ext import commands
-from core import bot_info
 
 class HelpCommand(commands.Cog):
     def __init__(self, client):
@@ -32,7 +31,7 @@ class HelpCommand(commands.Cog):
             embed = discord.Embed(
                 title = "Help",
                 color = 0xff0000,
-                url = bot_info.github
+                url = "https://github.com/Nhalrath/Chie"
             )
             embed.add_field(
                 name = "Miscellaneous",

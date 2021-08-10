@@ -29,7 +29,6 @@ try:
 
         USE_SHARDING    = os.environ["USE_SHARDING"]    if USE_SYS_ENV else config["USE_SHARDING"]
         TOKEN           = os.environ["TOKEN"]           if USE_SYS_ENV else config["TOKEN"]
-        TGG_TOKEN       = os.environ["TGG_TOKEN"]       if USE_SYS_ENV else config["TGG_TOKEN"]
         COMMAND_PREFIX  = os.environ["COMMAND_PREFIX"]  if USE_SYS_ENV else config["COMMAND_PREFIX"]
         OWNER_ID        = os.environ["OWNER_ID"]        if USE_SYS_ENV else config["OWNER_ID"]
         SHARD_COUNT     = os.environ["SHARD_COUNT"]     if USE_SYS_ENV else config["SHARD_COUNT"]

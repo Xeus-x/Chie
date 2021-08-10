@@ -16,7 +16,7 @@ import discord
 import json
 import random
 import requests
-from chieUtils import event_logger as logger
+from utils import logger
 from discord.ext import commands
 
 class DanbooruCommand(commands.Cog):
