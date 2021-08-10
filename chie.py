@@ -46,8 +46,6 @@ else:
 client.remove_command("help")
 
 # Load cogs and commands
-listeners_path = "cogs.event_listeners."
-
 commands_path = ["miscellaneous.avatar_command",
                  "miscellaneous.choose_command",
                  "miscellaneous.dice_command",
@@ -76,8 +74,7 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
     logger.INFO(__name__, '{0.user} is online.'.format(client))
 
-for listener in ["cogs.event_listeners." + path for path in ["topGG", "error_listener"]]:
-    client.load_extension(listener)
+client.load_extension("cogs.event_listeners.error_listener")
 
 for command in ["cogs.commands." + path for path in commands_path]:
     client.load_extension(command)
