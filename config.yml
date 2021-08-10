@@ -1,10 +1,10 @@
-use_system_environment: true
+use_system_environment: false
 use_sharding: false
 
 # Variables
-TOKEN: "Your Token here"
-TGGTOKEN: "Your Top.gg Token here"
-PREFIX: "Your Prefix here"
-OWNERID: "Your Discord User ID here"
+TOKEN: "NzgxODI3MTUyNjIyNTE4MzMz.X8DTRg.ARnUwhBjMHn_FIoojn-wvytjtNk"
+TGG_TOKEN: "NOP"
+PREFIX: "-"
+OWNERID: "0"
 
 shard_count: 0

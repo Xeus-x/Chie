@@ -11,15 +11,17 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-#45 Lines
+
 import logging
 
-def debugInit(logger, level, loggerType, msg):
+def log_event(logger, level, loggerType, msg):
     logger = logging.getLogger(logger)
-    logger.setLevel(level)
     handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a')
+    
+    logger.setLevel(level)
     handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)s | %(name)s | %(message)s'))
     logger.addHandler(handler) 
+
     if loggerType == 1:
         logger.info(msg)
     elif loggerType == 2:
@@ -31,16 +33,16 @@ def debugInit(logger, level, loggerType, msg):
     print(msg)
 
 def INFO(logger, msg):
-    level = logging.INFO
-    loggerType = 1
-    logger = debugInit(logger, level, loggerType, msg)
+    level       = logging.INFO
+    loggerType  = 1
+    logger      = log_event(logger, level, loggerType, msg)
 
 def DEBUG(logger, msg):
-    level = logging.DEBUG
-    loggerType = 2
-    logger = debugInit(logger, level, loggerType, msg)
+    level       = logging.DEBUG
+    loggerType  = 2
+    logger      = log_event(logger, level, loggerType, msg)
 
 def WARNING(logger, msg):
-    level = logging.WARNING
-    loggerType = 3
-    logger = debugInit(logger, level, loggerType, msg)
+    level       = logging.WARNING
+    loggerType  = 3
+    logger      = log_event(logger, level, loggerType, msg)

@@ -12,9 +12,8 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import discord
-from datetime import timedelta
-from discord.ext import commands
+from datetime       import timedelta
+from discord.ext    import commands
 
 class ErrorListener(commands.Cog):
     def __init__(self, client):
@@ -26,7 +25,7 @@ class ErrorListener(commands.Cog):
             return
             
         elif isinstance(error, commands.CommandOnCooldown):
-            await ctx.send("Not too fast! You can use this command again in {}".format(datetime.timedelta(seconds=error.retry_after).strftime("**%H**, **%M**, **%S**")))
+            await ctx.send("Not too fast! You can use this command again in {}".format(timedelta(seconds=error.retry_after).strftime("**%H**, **%M**, **%S**")))
 
 def setup(client):
     client.add_cog(ErrorListener(client))

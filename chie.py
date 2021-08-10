@@ -12,19 +12,63 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
+import os
 import discord
+import json
+
 from datetime import datetime
 from discord.ext import commands
-from core.reactor import startup
-from chieUtils import config
-from chieUtils import event_logger as logger
+from chieUtils import logger
 
-if config.sharding == True:
-    client = commands.AutoShardedBot(config.get_prefix, shard_count = config.shards, intents = discord.Intents().all())
-    logger.INFO(__name__, f"Generated {config.shards} shards")
+# Config
+try:
+    with open("config.json", 'r') as f:
+        config = json.load(f)
 
-elif config.sharding == False:
-    client = commands.Bot(config.get_prefix, intents = discord.Intents().all())
+        USE_SYS_ENV = True if config["USE_SYS_ENV"] else False
+
+        USE_SHARDING    = os.environ["USE_SHARDING"]    if USE_SYS_ENV else config["USE_SHARDING"]
+        TOKEN           = os.environ["TOKEN"]           if USE_SYS_ENV else config["TOKEN"]
+        TGG_TOKEN       = os.environ["TGG_TOKEN"]       if USE_SYS_ENV else config["TGG_TOKEN"]
+        COMMAND_PREFIX  = os.environ["COMMAND_PREFIX"]  if USE_SYS_ENV else config["COMMAND_PREFIX"]
+        OWNER_ID        = os.environ["OWNER_ID"]        if USE_SYS_ENV else config["OWNER_ID"]
+        SHARD_COUNT     = os.environ["SHARD_COUNT"]     if USE_SYS_ENV else config["SHARD_COUNT"]
+except KeyError:
+    print("Failed to initialize config constants")
+
+if USE_SHARDING:
+    client = commands.AutoShardedBot(COMMAND_PREFIX, shard_count = SHARD_COUNT, intents = discord.Intents().all())
+    logger.INFO(__name__, f"Generated {SHARD_COUNT} shards")
+
+else:
+    client = commands.Bot(COMMAND_PREFIX, intents = discord.Intents().all())
+
+client.remove_command("help")
+
+# Load cogs and commands
+listeners_path = "cogs.event_listeners."
+
+commands_path = ["miscellaneous.avatar_command",
+                 "miscellaneous.choose_command",
+                 "miscellaneous.dice_command",
+                 "miscellaneous.ping_command",
+                 "miscellaneous.say_command",
+
+                 "moderation.unban_command",
+                 "moderation.prune_command",
+
+                 "informations.invite_command",
+                 "informations.userinfo_command",
+                 "informations.guildinfo_command",
+                 "informations.help_command",
+                 "informations.support_command",
+
+                 "imageboards.actions.hug_command",
+                 "imageboards.actions.slap_command",
+                 "imageboards.actions.kiss_command",
+
+                 "imageboards.danbooru",
+                 "imageboards.safebooru"]
 
 @client.event
 async def on_ready():
@@ -32,4 +76,10 @@ async def on_ready():
     await client.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = 'over you.'))
     logger.INFO(__name__, '{0.user} is online.'.format(client))
 
-startup(client, config.get_token)
+for listener in ["cogs.event_listeners." + path for path in ["topGG", "error_listener"]]:
+    client.load_extension(listener)
+
+for command in ["cogs.commands." + path for path in commands_path]:
+    client.load_extension(command)
+
+client.run(TOKEN)
