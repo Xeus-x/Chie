@@ -18,7 +18,7 @@ import json
 
 from datetime import datetime
 from discord.ext import commands
-from chieUtils import logger
+from utils import logger
 
 # Config
 try:
