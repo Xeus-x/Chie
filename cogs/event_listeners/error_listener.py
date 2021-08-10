@@ -12,8 +12,8 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-from datetime       import timedelta
-from discord.ext    import commands
+from datetime import timedelta
+from discord.ext import commands
 
 class ErrorListener(commands.Cog):
     def __init__(self, client):
