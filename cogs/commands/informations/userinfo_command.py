@@ -25,21 +25,17 @@ class UserInfoCommand(commands.Cog):
             embed = discord.Embed(
                 title = user.name + "'s Profile",
                 color = 0xff0000
-            )
-            embed.set_thumbnail(
+            ).set_thumbnail(
                 url = user.avatar_url
-            )
-            embed.add_field(
+            ).add_field(
                 name = "ID",
                 value = user.id,
                 inline = False
-            )
-            embed.add_field(
+            ).add_field(
                 name = "Date Created",
                 value = user.created_at.strftime("%B %d, %Y at %H:%m"),
                 inline = False
-            )
-            embed.set_footer(
+            ).set_footer(
                 text = ctx.author,
                 icon_url = ctx.author.avatar_url
             )

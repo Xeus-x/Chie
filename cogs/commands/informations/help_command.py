@@ -15,7 +15,6 @@
 import discord
 import json
 from discord.ext import commands
-from core import bot_info
 
 class HelpCommand(commands.Cog):
     def __init__(self, client):
@@ -32,29 +31,24 @@ class HelpCommand(commands.Cog):
             embed = discord.Embed(
                 title = "Help",
                 color = 0xff0000,
-                url = bot_info.github
-            )
-            embed.add_field(
+                url = "https://github.com/Nhalrath/Chie"
+            ).add_field(
                 name = "Miscellaneous",
                 value = "`choose`, `dice`, `ping`, `say`",
                 inline = False
-            )
-            embed.add_field(
+            ).add_field(
                 name = "Informations",
                 value = "`guildinfo`, `userinfo`, `help`",
                 inline = False 
-            )
-            embed.add_field(
+            ).add_field(
                 name = "Images",
                 value = "`danbooru`, `safebooru`, `hug`, `slap`, `kiss`",
                 inline = False
-            )
-            embed.add_field(
+            ).add_field(
                 name = "Moderation",
                 value = "`prune`, `kick`, `ban`",
                 inline = False
-            )
-            embed.set_footer(
+            ).set_footer(
                 text = ctx.author,
                 icon_url = ctx.author.avatar_url
             )
@@ -68,23 +62,19 @@ class HelpCommand(commands.Cog):
                 embed = discord.Embed(
                     title = page,
                     color = 0xff0000,
-                )
-                embed.add_field(
+                ).add_field(
                     name = "Aliases",
                     value = smpl["alias"],
                     inline = False
-                )
-                embed.add_field(
+                ).add_field(
                     name = "Usage",
                     value = smpl["usage"],
                     inline = False
-                )
-                embed.add_field(
+                ).add_field(
                     name = "Description",
                     value = smpl["description"],
                     inline = False
-                )
-                embed.set_footer(
+                ).set_footer(
                     text = ctx.author,
                     icon_url = ctx.author.avatar_url
                 )
