@@ -25,11 +25,9 @@ class AvatarCommand(commands.Cog):
             embed = discord.Embed(
                 title = user.name + "'s Avatar",
                 color = 0xff0000
-            )
-            embed.set_image(
+            ).set_image(
                 url = user.avatar_url
-            )
-            embed.set_footer(
+            ).set_footer(
                 text = ctx.author,
                 icon_url = ctx.author.avatar_url
             )

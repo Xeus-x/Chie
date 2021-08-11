@@ -13,8 +13,6 @@
 #   limitations under the License.
 
 import discord
-import json
-import random
 import requests
 from utils import logger
 from discord.ext import commands
@@ -30,16 +28,13 @@ class DanbooruCommand(commands.Cog):
             embed = discord.Embed(
                 title = "Danbooru",
                 color = 0xFFC0CB,
-            )
-            embed.add_field(
+            ).add_field(
                 name = "Tags",
                 value = tag,
                 inline = False
-            )
-            embed.set_image(
+            ).set_image(
                 url = image
-            )
-            embed.set_footer(
+            ).set_footer(
                 text = ctx.author,
                 icon_url = ctx.author.avatar_url
             )
