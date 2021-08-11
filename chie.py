@@ -57,12 +57,6 @@ commands_path = ["miscellaneous.avatar_command",
                  "informations.invite_command",
                  "informations.userinfo_command",
                  "informations.guildinfo_command",
-                 "informations.help_command",
-                 "informations.support_command",
-
-                 "imageboards.actions.hug_command",
-                 "imageboards.actions.slap_command",
-                 "imageboards.actions.kiss_command",
 
                  "imageboards.danbooru",
                  "imageboards.safebooru"]
