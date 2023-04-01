@@ -12,8 +12,17 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import json
+import discord
+from discord.ext import commands
 
-def parse(obj):
-    data = json.dumps(obj, sort_keys=True, indent=4)
-    return data
+class InviteCommand(commands.Cog):
+    def __init__(self, client):
+        self.client = client
+
+    @commands.command()
+    async def invite(self, ctx):
+        await ctx.send("**Want to add Chie to your server? Use this link:**\n\
+            https://discord.com/api/oauth2/authorize?client_id=771404069931319296&permissions=26624&scope=bot")
+
+def setup(client):
+    client.add_cog(InviteCommand(client))

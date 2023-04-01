@@ -14,7 +14,6 @@
 
 import discord
 from discord.ext import commands
-from core import bot_info
 
 class GuildInfoCommand(commands.Cog):
     def __init__(self, client):
@@ -25,41 +24,33 @@ class GuildInfoCommand(commands.Cog):
         embed = discord.Embed(
             title = ctx.guild.name + "'s Info",
             color = 0xff0000
-        )
-        embed.set_thumbnail(
+        ).set_thumbnail(
             url = ctx.guild.icon_url
-        )
-        embed.add_field(
+        ).add_field(
             name = "ID",
             value = ctx.guild.id,
             inline = False
-        )
-        embed.add_field(
+        ).add_field(
             name = "Date Created",
             value = ctx.guild.created_at.strftime("%B %d, %Y at %H:%m"),
             inline = False
-        )
-        embed.add_field(
+        ).add_field(
             name = "Owner",
             value = ctx.guild.owner,
             inline = False
-        )
-        embed.add_field(
+        ).add_field(
             name = "Members",
             value = ctx.guild.member_count,
             inline = True
-        )
-        embed.add_field(
+        ).add_field(
             name = "Channels",
             value = len(ctx.guild.channels),
             inline = True
-        )
-        embed.add_field(
+        ).add_field(
             name = "Region",
             value = ctx.guild.region,
             inline = True
-        )
-        embed.set_footer(
+        ).set_footer(
             text = ctx.author,
             icon_url = ctx.author.avatar_url
         )

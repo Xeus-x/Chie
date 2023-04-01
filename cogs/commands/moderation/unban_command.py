@@ -12,19 +12,17 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import dbl
 import discord
 from discord.ext import commands
-from chieUtils import config
 
-class TopGG(commands.Cog):
+class UnbanCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
-        self.token = config.get_tgg_token
-        self.dblpy = dbl.DBLClient(self.client, self.token, autopost=True)
 
-    async def on_guild_post():
-        print("Server count posted successfully")
+    @commands.command()
+    @commands.has_permissions(ban_members = True)
+    async def unban(self, ctx, member : discord.Member):
+        await member.unban()
 
-def setup(bot):
-    bot.add_cog(TopGG(bot))
+def setup(client):
+    client.add_cog(UnbanCommand(client))

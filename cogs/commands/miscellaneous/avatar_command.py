@@ -14,7 +14,6 @@
 
 import discord
 from discord.ext import commands
-from core import bot_info
 
 class AvatarCommand(commands.Cog):
     def __init__(self, client):
@@ -26,11 +25,9 @@ class AvatarCommand(commands.Cog):
             embed = discord.Embed(
                 title = user.name + "'s Avatar",
                 color = 0xff0000
-            )
-            embed.set_image(
+            ).set_image(
                 url = user.avatar_url
-            )
-            embed.set_footer(
+            ).set_footer(
                 text = ctx.author,
                 icon_url = ctx.author.avatar_url
             )

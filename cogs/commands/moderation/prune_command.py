@@ -14,7 +14,7 @@
 
 import discord
 from discord.ext import commands
-from chieUtils import event_logger
+from utils import logger
 
 class PruneCommand(commands.Cog):
     def __init__(self, client):
@@ -25,7 +25,7 @@ class PruneCommand(commands.Cog):
     async def prune(self, ctx, *, amount=1):
         if amount >= 101:
             await ctx.send("Sorry, but I can't handle that amount `max: 100`")
-            event_logger.INFO(__name__, '{} tried to delete {} messages.'.format(ctx.author, amount))
+            logger.INFO(__name__, '{} tried to delete {} messages.'.format(ctx.author, amount))
             return False
         else:
             amount += 1

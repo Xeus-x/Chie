@@ -1,0 +1,130 @@
+{
+    "help": {
+        "name": "help",
+        "alias": null,
+        "usage": "`>help`",
+        "description": "Shows this page.",
+        "category": "information",
+        "permission": null
+    },
+    "ping": {
+        "name": "ping",
+        "alias": null,
+        "usage": "`>ping`",
+        "description": "Tells the websocket and client ping.",
+        "category": "information",
+        "permission": null
+    },
+    "avatar": {
+        "name": "avatar",
+        "alias": null,
+        "usage": "`>avatar [@mention]`",
+        "description": "Shows the avatar of a user.",
+        "category": "miscallenous",
+        "permission": null
+    },
+    "choose": {
+        "name": "choose",
+        "alias": "`pick`",
+        "usage": "`>choose {item}, {item}, ...`",
+        "description": "Picks between choices.",
+        "category": "miscallenous",
+        "permission": null
+    },
+    "dice": {
+        "name": "dice",
+        "alias": "`roll`",
+        "usage": "`>dice [faces]`",
+        "description": "Rolls a die.",
+        "category": "miscallenous",
+        "permission": null
+    },
+    "say": {
+        "name": "say",
+        "alias": null,
+        "usage": "`>say {sentence}`",
+        "description": "Repeats the words said after the prefix",
+        "category": "miscallenous",
+        "permission": null
+    },
+    "userinfo": {
+        "name": "userinfo",
+        "alias": "`profile`",
+        "usage": "`>userinfo [@mention]`",
+        "description": "Shows the Discord information of a user.",
+        "category": "information",
+        "permission": null
+    },
+    "guildinfo": {
+        "name": "guildinfo",
+        "alias": "`serverinfo`",
+        "usage": "`>guildinfo`",
+        "description": "Shows the Discord information of a guild/server.",
+        "category": "information",
+        "permission": ""
+    },
+    "prune": {
+        "name": "prune",
+        "alias": "`clrmsg`, `purge`",
+        "usage": "`>prune [amount]`",
+        "description": "Deletes a message.",
+        "category": "moderation",
+        "permission": "manage messages"
+    },
+    "kick": {
+        "name": "kick",
+        "alias": null,
+        "usage": "`>kick {@mention} [reason]`",
+        "description": "Kicks a member out of the guild/server.",
+        "category": "moderation",
+        "permission": "kick members"
+    },
+    "ban": {
+        "name": "ban",
+        "alias": null,
+        "usage": "`>ban {@mention} [reason]`",
+        "description": "Bans a member in the guild/server.",
+        "category": "moderation",
+        "permission": "ban members"
+    },
+    "danbooru": {
+        "name": "danbooru",
+        "alias": null,
+        "usage": "`>danbooru [tags]`",
+        "description": "Grabs a danbooru image.\n**Can only be used in NSFW channels.**\n**Tags are currently broken**",
+        "category": "images",
+        "permission": null
+    },
+    "safebooru": {
+        "name": "safebooru",
+        "alias": null,
+        "usage": "`>safebooru [tags]`",
+        "description": "Grabs a safebooru image.\n**Tags are currently broken.**",
+        "category": "images",
+        "permission": null
+    },
+    "hug": {
+        "name": "hug",
+        "alias": null,
+        "usage": "`>hug [@mention]`",
+        "description": "Sends a GIF image.",
+        "category": "images",
+        "permission": null
+    },
+    "kiss": {
+        "name": "kiss",
+        "alias": null,
+        "usage": "`>kiss [@mention]`",
+        "description": "Sends a GIF image.",
+        "category": "images",
+        "permission": null
+    },
+    "slap": {
+        "name": "slap",
+        "alias": null,
+        "usage": "`>slap [@mention]`",
+        "description": "Sends a GIF image.",
+        "category": "images",
+        "permission": null
+    }
+}

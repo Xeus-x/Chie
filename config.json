@@ -1,0 +1,8 @@
+{
+    "USE_SYS_ENV": false,
+    "USE_SHARDING": false,
+    "TOKEN": "TOKEN",
+    "COMMAND_PREFIX": "-",
+    "OWNER_ID": 0,
+    "SHARD_COUNT": 0
+}
